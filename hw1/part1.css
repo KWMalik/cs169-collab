@@ -1,1 +1,253 @@
+#header {
+  background-color:#3B5998;
+  border-style:solid;
+  border-width:5px;
+  height:50px;
+  width:1240px;
+}
 
+body {
+  font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+  color:#3B5998;
+  height:800px;
+  width:1240;
+  max-height:800px;
+  max-width:1240px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h2 {
+  font-size:16px;
+  color:gray;
+  border-bottom-color:gray;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+}
+
+td {
+  vertical-align:top;
+  padding-top:10px;
+}
+
+textarea {
+  font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+  resize:none;
+  font-size:12px;
+}
+
+#header_title {
+  padding-top:10px;
+  padding-left:50px;
+  font-size:30px;
+  font-weight:bold;
+  color:white;
+}
+
+table#header_nav {
+  position:relative;
+  top:-25px;
+  left:900px;
+  padding-right:50px;
+  color:white;
+}
+
+table#header_nav td{
+  font-weight:bold;
+  font-size:12px;
+  padding-right:10px;
+}
+
+#left_nav {
+  position:relative;
+  width:250px;
+  height:800px;
+  border-right-style:solid;
+  border-right-width:2px;
+  border-right-color:gray;
+}
+
+#profile {
+  height:25%;
+  width:100%;
+}
+
+#profile h3{
+  position:relative;
+  font-weight:bold;
+  font-size:12px;
+  top:-25px;
+  left:45%;
+}
+
+#profile h4{
+  position:relative;
+  font-size:10px;
+  top:-35px;
+  left:45%;
+}
+
+.profile{
+  position:relative;
+  top:20%;
+  left:20%;
+}
+
+.picture {
+  background-color:#3B5998;
+  height:50px;
+  width:50px;
+  border-style:solid;
+  border-width:2px;
+  border-color:black;
+}
+
+#navigation {
+  position:relative;
+  top:-100px;
+  width:200px;
+}
+
+#navigation li{
+  font-size:12px;
+  font-weight:bold;
+  padding-bottom:10px;
+}
+
+#friend_list {
+  position:relative;
+  top:-100px;
+  left:40px;
+  width:200px;
+  height:600px;
+}
+
+#friend_list table {
+  font-size:12px;
+  font-weight:bold;
+}
+
+#friend_list td {
+  padding-bottom:10px;
+  padding-right:30px;
+}
+
+#content {
+  position:relative;
+  top:-800px;
+  left:275px;
+  width:600px;
+  height:800px;
+}
+
+#content h1{
+  font-size:20px;
+}
+
+#status {
+  width:600px;
+  height:25px;
+  color:gray;
+}
+
+.news_feed {
+  border-bottom-color:gray;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  padding-bottom:10px;
+  width:;
+}
+
+.news_feed td {
+  padding-left:10px;
+}
+
+.news_feed_bottom {
+  position:relative;
+  top:5px;
+}
+
+.name {
+  position:relative;
+  font-weight:bold;
+  font-size:15px;
+  color:#3B5998;
+  border:none;
+}
+
+.update {
+  position:relative;
+  top:-55px;
+  left:60px;
+}
+
+.time {
+  color: gray;
+  font-size:12px;
+}
+
+.actions {
+  font-size:12px;
+}
+
+.video_box {
+  background-color:#3B5998;
+  height:100px;
+  width:150px;
+  border-style:solid;
+  border-width:2px;
+  border-color:black;
+}
+
+#right_nav {
+  position:relative;
+  top:-1600px;
+  left:900px;
+  width:300px;
+}
+
+.ad_box {
+  background-color:#3B5998;
+  height:200px;
+  width:200px;
+  border-style:solid;
+  border-width:2px;
+  border-color:black;
+}
+
+.ad {
+  position:relative;
+  font-weight:bold;
+  font-size:12px;
+  color:white;
+  top:-30px;
+  left:85px;
+}
+
+.friend_finder {
+  width:200px;
+  height:25px;
+  color:gray;
+}
+
+.button {
+  width:200px;
+  height:30px;
+  color:gray;
+}
+
+#request {
+  color: black;
+  font-size:12px;
+}
+
+.whosFacebook {
+  color: black;
+  font-size:12px;
+}
+
+.bold {
+  font-weight:bold;
+}
