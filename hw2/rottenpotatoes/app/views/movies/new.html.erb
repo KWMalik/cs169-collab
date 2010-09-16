@@ -1,0 +1,33 @@
+<h1>New movie</h1>
+
+<% form_for(@movie) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :rating %><br />
+    <%= f.select :rating,
+      '<option value="G">G</option>'+
+      '<option value="PG">PG</option>'+
+      '<option value="PG-13">PG-13</option>'+
+      '<option value="R">R</option>'+
+      '<option value="NC-17">NC-17</option>'
+    %>
+  </p>
+  <p>
+    <%= f.label :released_on %><br />
+    <%= f.date_select :released_on, :order=>[:month, :day, :year] %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', movies_path %>

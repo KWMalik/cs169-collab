@@ -1,0 +1,1 @@
+If the index.html file is in the public directory of the rails app, accessing the root page will show this index.html file. If the index.html file is removed, it will use the root route defined in the routes.rb.
