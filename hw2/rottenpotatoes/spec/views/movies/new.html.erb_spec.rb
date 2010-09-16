@@ -18,7 +18,7 @@ describe "/movies/new.html.erb" do
     response.should have_tag("form[action=?][method=post]", movies_path) do
       with_tag("input#movie_title[name=?]", "movie[title]")
       with_tag("textarea#movie_description[name=?]", "movie[description]")
-      with_tag("input#movie_rating[name=?]", "movie[rating]")
+      with_tag("select#movie_rating[name=?]", "movie[rating]")
     end
   end
 end

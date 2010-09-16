@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe MoviesController do
   describe "routing" do
-    it "recognizes and generates #index" do
-      { :get => "/movies" }.should route_to(:controller => "movies", :action => "index")
+    it "recognizes and generates #root and maps to #movieindex" do
+      { :get => "/"}.should route_to(:controller => "movies", :action=>"index")
     end
+
+    #it "recognizes and generates #index" do
+      #{ :get => "/movies" }.should route_to(:controller => "movies", :action => "index")
+    #end
 
     it "recognizes and generates #new" do
       { :get => "/movies/new" }.should route_to(:controller => "movies", :action => "new")

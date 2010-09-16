@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller=>"movies"
+  map.connect '/', :controller=>"movies"
   map.resources :movies
 
   # The priority is based upon order of creation: first created -> highest priority.
