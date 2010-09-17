@@ -83,3 +83,8 @@ Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/hello]
 Processing HelloController#index (for 127.0.0.1 at 2010-09-14 23:57:43) [GET]
 Rendering hello/index
 Completed in 2ms (View: 0, DB: 0) | 200 OK [http://localhost/hello]
+
+
+Processing HelloController#index (for 127.0.0.1 at 2010-09-16 21:33:54) [GET]
+Rendering hello/index
+Completed in 34ms (View: 7, DB: 0) | 200 OK [http://localhost/hello/]

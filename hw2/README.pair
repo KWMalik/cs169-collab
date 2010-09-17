@@ -1,0 +1,9 @@
+Partners: Derrick Tao and Jason Wu
+
+We tried to split up the work 50-50, with each partner alternating between writing spec test cases and adding functionality/validations to the Movie model. Derrick worked on the validations and a ratings helper function, while Jason worked on the rest of the rating functionality.
+
+Working in pairs sped up implementation by allowing us to discuss various refactoring schemes as well as possible test cases. Being able to bounce ideas off each other helped us write the actual code more quickly than we could have if we had to brainstorm by ourselves.
+
+It slowed down implementation slightly because, at times, we each had to take some time to read over code written by the other partner to understand its function. However, this was not much of an issue.
+
+For this project, we worked together remotely most of the time. In the future, we would likely meet up and do pair programming.

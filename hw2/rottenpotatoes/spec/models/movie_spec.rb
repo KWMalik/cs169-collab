@@ -28,7 +28,7 @@ describe Movie do
       :description => "Some pg13 movie with mild violence",
       :rating => "PG-13",
     })
-    Movie.create!({
+    @another_pg13 = Movie.create!({
       :title => "Some PG-13 Movie2",
       :description => "Some pg13 movie with swear words",
       :rating => "PG-13",
@@ -158,18 +158,27 @@ describe Movie do
 
   describe "database finder for age-appropriateness" do
     it "should always include all rated movies" do
-      Movie.find_all_appropriate_for_birthdate(Time.parse("Jan 1 1989")).each do |movie|
-        ["G", "PG", "PG-13", "R", "NC-17"].should include movie.rating
+      @database_finder_results = Movie.find_all_appropriate_for_birthdate(Time.parse("Jan 1 1989"))
+      @all_rated_movies = [@g, @lionking, @pg, @pg13, @another_pg13, @r, @nc17]
+      @database_finder_results.length.should == @all_rated_movies.length
+      @database_finder_results.each do |movie|
+        @all_rated_movies.should include movie
       end
     end
     it "should exclude NC-17 and R rated movies if age is less than 17" do 
-      Movie.find_all_appropriate_for_birthdate(Time.parse("Jan 1 1994")).each do |movie|
-        ["G", "PG", "PG-13"].should include movie.rating
+      @database_finder_results = Movie.find_all_appropriate_for_birthdate(Time.parse("Jan 1 1994"))
+      @non_r_and_nc17_movies = [@g, @lionking, @pg, @pg13, @another_pg13]
+      @database_finder_results.length.should == @non_r_and_nc17_movies.length
+      @database_finder_results.each do |movie|
+        @non_r_and_nc17_movies.should include movie
       end
     end
     it "should only have G, PG movies if age is less than 13" do
-      Movie.find_all_appropriate_for_birthdate(Time.parse("Jan 1 1998")).each do |movie|
-        ["G", "PG"].should include movie.rating
+      @database_finder_results = Movie.find_all_appropriate_for_birthdate(Time.parse("Jan 1 1998"))
+      @only_g_and_pg_movies = [@g, @lionking, @pg]
+      @database_finder_results.length.should == @only_g_and_pg_movies.length
+      @database_finder_results.each do |movie|
+        @only_g_and_pg_movies.should include movie
       end
     end
   end
