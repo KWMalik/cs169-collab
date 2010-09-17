@@ -115,14 +115,20 @@ describe Movie do
 
   # Add more specs here!
   describe "when checking valid ratings for birthdays" do
-    it "should return valid ratings for >=17 birthday" do
-      Movie.appropriate_rating_for_birthday(Time.parse("Jan 1 1989")).should == ["G", "PG", "PG-13", "R", "NC-17"]
+    it "should return valid ratings for >17 birthday" do
+      Movie.appropriate_ratings_for_birthdate(Time.parse("Jan 1 1989")).should == ["G", "PG", "PG-13", "R", "NC-17"]
     end
-    it "should return valid ratings for >=13 birthday" do
-      Movie.appropriate_rating_for_birthday(Time.parse("Jan 1 1994")).should == ["G", "PG", "PG-13"]
+    it "should return valid ratings for ==17 birthday (corner case)" do
+      Movie.appropriate_ratings_for_birthdate(17.years.ago).should == ["G", "PG", "PG-13", "R", "NC-17"]
+    end
+    it "should return valid ratings for >13 birthday" do
+      Movie.appropriate_ratings_for_birthdate(Time.parse("Jan 1 1994")).should == ["G", "PG", "PG-13"]
+    end
+    it "should return valid ratings for ==13 birthday (corner case)" do
+      Movie.appropriate_ratings_for_birthdate(13.years.ago).should == ["G", "PG", "PG-13"]
     end
     it "should return valid ratings for < 13 birthday" do
-      Movie.appropriate_rating_for_birthday(Time.parse("Jan 1 1998")).should == ["G", "PG"]
+      Movie.appropriate_ratings_for_birthdate(Time.parse("Jan 1 1998")).should == ["G", "PG"]
     end
   end
 
