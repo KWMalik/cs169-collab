@@ -703,3 +703,68 @@ Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/movies/7/edit]
 [0m
   [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
   [4;35;1mSQL (74.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100915071424')[0m
+
+
+Processing MoviesController#index (for 127.0.0.1 at 2010-09-16 21:26:03) [GET]
+  [4;36;1mMovie Load (0.0ms)[0m   [0;1mSELECT * FROM "movies" [0m
+Rendering template within layouts/movies
+Rendering movies/index
+Completed in 276ms (View: 270, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing MoviesController#destroy (for 127.0.0.1 at 2010-09-16 21:26:07) [DELETE]
+  Parameters: {"authenticity_token"=>"vHv/9tUCuwKOMLoM9gwP4XhbzXkjxmLeYoIfebnC53s=", "id"=>"7"}
+  [4;35;1mMovie Load (0.0ms)[0m   [0mSELECT * FROM "movies" WHERE ("movies"."id" = 7) [0m
+  [4;36;1mMovie Destroy (1.0ms)[0m   [0;1mDELETE FROM "movies" WHERE "id" = 7[0m
+Redirected to http://localhost:3000/movies
+Completed in 105ms (DB: 1) | 302 Found [http://localhost/movies/7]
+
+
+Processing MoviesController#index (for 127.0.0.1 at 2010-09-16 21:26:07) [GET]
+  [4;35;1mMovie Load (0.0ms)[0m   [0mSELECT * FROM "movies" [0m
+Rendering template within layouts/movies
+Rendering movies/index
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/movies]
+
+
+Processing MoviesController#new (for 127.0.0.1 at 2010-09-16 21:26:10) [GET]
+Rendering template within layouts/movies
+Rendering movies/new
+Completed in 18ms (View: 12, DB: 0) | 200 OK [http://localhost/movies/new]
+
+
+Processing MoviesController#new (for 127.0.0.1 at 2010-09-16 21:26:17) [GET]
+Rendering template within layouts/movies
+Rendering movies/new
+Completed in 14ms (View: 9, DB: 0) | 200 OK [http://localhost/movies/new]
+
+
+Processing MoviesController#create (for 127.0.0.1 at 2010-09-16 21:26:31) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"vHv/9tUCuwKOMLoM9gwP4XhbzXkjxmLeYoIfebnC53s=", "movie"=>{"rating"=>"PG", "title"=>"Snow White", "released_on(1i)"=>"2010", "released_on(2i)"=>"9", "released_on(3i)"=>"17", "description"=>"Rawwwwwwwwwwwwwwwwwwwwwwr!"}}
+  [4;36;1mMovie Load (1.0ms)[0m   [0;1mSELECT "movies".id FROM "movies" WHERE ("movies"."title" = 'Snow White') LIMIT 1[0m
+  [4;35;1mMovie Create (1.0ms)[0m   [0mINSERT INTO "movies" ("rating", "created_at", "title", "released_on", "updated_at", "description") VALUES('PG', '2010-09-17 04:26:31', 'Snow White', '2010-09-17 00:00:00', '2010-09-17 04:26:31', 'Rawwwwwwwwwwwwwwwwwwwwwwr!')[0m
+Redirected to http://localhost:3000/movies/8
+Completed in 116ms (DB: 2) | 302 Found [http://localhost/movies]
+
+
+Processing MoviesController#show (for 127.0.0.1 at 2010-09-16 21:26:32) [GET]
+  Parameters: {"id"=>"8"}
+  [4;36;1mMovie Load (0.0ms)[0m   [0;1mSELECT * FROM "movies" WHERE ("movies"."id" = 8) [0m
+Rendering template within layouts/movies
+Rendering movies/show
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/movies/8]
+
+
+Processing MoviesController#edit (for 127.0.0.1 at 2010-09-16 21:26:34) [GET]
+  Parameters: {"id"=>"8"}
+  [4;35;1mMovie Load (1.0ms)[0m   [0mSELECT * FROM "movies" WHERE ("movies"."id" = 8) [0m
+Rendering template within layouts/movies
+Rendering movies/edit
+Completed in 21ms (View: 14, DB: 1) | 200 OK [http://localhost/movies/8/edit]
+
+
+Processing MoviesController#index (for 127.0.0.1 at 2010-09-16 21:26:37) [GET]
+  [4;36;1mMovie Load (1.0ms)[0m   [0;1mSELECT * FROM "movies" [0m
+Rendering template within layouts/movies
+Rendering movies/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/movies]
