@@ -13,11 +13,11 @@
   </p>
   <p>
     <%= f.label :rating %><br />
-    <%= f.text_field :rating %>
+    <%= f.select :rating, [ 'G', 'PG', 'PG-13', 'R', 'NC-17' ] %>
   </p>
   <p>
     <%= f.label :released_on %><br />
-    <%= f.datetime_select :released_on %>
+    <%= f.date_select :released_on %>
   </p>
   <p>
     <%= f.submit 'Update' %>

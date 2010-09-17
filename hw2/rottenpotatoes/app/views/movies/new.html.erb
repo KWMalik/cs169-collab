@@ -13,17 +13,11 @@
   </p>
   <p>
     <%= f.label :rating %><br />
-    <%= f.select :rating,
-      '<option value="G">G</option>'+
-      '<option value="PG">PG</option>'+
-      '<option value="PG-13">PG-13</option>'+
-      '<option value="R">R</option>'+
-      '<option value="NC-17">NC-17</option>'
-    %>
+    <%= f.select :rating, [ 'G', 'PG', 'PG-13', 'R', 'NC-17' ] %>
   </p>
   <p>
     <%= f.label :released_on %><br />
-    <%= f.date_select :released_on, :order=>[:month, :day, :year] %>
+    <%= f.date_select :released_on %>
   </p>
   <p>
     <%= f.submit 'Create' %>
