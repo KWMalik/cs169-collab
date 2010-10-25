@@ -12,11 +12,11 @@ When we edited the event (we changed the contact phone number) without proper ca
 
 - This sweeper will inherit from the ActionController::Caching::Sweeper
 - The directive at the top of the sweeper is 'observe Event'
-- We will need the after_destroy and after_save (which works for both create and update actions) callbacks
+- We will need the after_create, after_update, and after_destroy callbacks
 
 To enable cache invalidation, we had to do 3 things:
 1) Add 'config.load_paths += %W( #{RAILS_ROOT}/app/sweepers )' to environment.rb.
-2) Add an event_sweeper.rb file to the sweepers directory. The EventSweeper class inherits from ActionController::Caching::Sweeper, observes the Event model, and has callbacks to after_destroy and after_save that call expire_page on the index and show pages.
+2) Add an event_sweeper.rb file to the sweepers directory. The EventSweeper class inherits from ActionController::Caching::Sweeper, observes the Event model, and has callbacks to after_create, after_update, and after_destroy that call expire_page on the index and show pages.
 3) Add 'cache_sweeper :event_sweeper, :only => [:create, :update, :destroy]' to event_controller.rb.
 
 Part 3.3
