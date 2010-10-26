@@ -1,24 +1,43 @@
 Part 3.1
 
-We found the maximum request rate for a URL that would normally be served by an action in this controller to be 1171.1 req/s with 50000 connections and a rate of 1210.
+
 
 When a Rails app receives a request without caching, the Rails routing mechanisms will direct it to the appropriate controller, which will (possibly) interact with the database, perform the appropriate controller action, render the content, and send the rendered content to the user. In the case of a request with caching, the request goes through the routing step but will bypass the controller; instead the requested page is retrieved from the app's page cache, and the cached rendered content is returned to the user.
 
+
+
 Problems arise when users add new events or update/destroy existing events. Since the main events listing and individual event views are cached, users will continue seeing the stale cached pages even after changes are made. A possible solution is to follow the page invalidation suggestions from the Rails page caching screencast. We can add 'expire_page' statements to the create, update, and destroy controller actions, specifying that the cached main events listing and individual event view associated with the manipulated event should be expired.
+
+
 
 Part 3.2
 
+
+
 When we edited the event (we changed the contact phone number) without proper cache expiration, revisiting the event's "show action" showed the stale information from before our edit (i.e. the old contact phone number).
 
+
+
 - This sweeper will inherit from the ActionController::Caching::Sweeper
+
 - The directive at the top of the sweeper is 'observe Event'
+
 - We will need the after_create, after_update, and after_destroy callbacks
 
+
+
 To enable cache invalidation, we had to do 3 things:
+
 1) Add 'config.load_paths += %W( #{RAILS_ROOT}/app/sweepers )' to environment.rb.
+
 2) Add an event_sweeper.rb file to the sweepers directory. The EventSweeper class inherits from ActionController::Caching::Sweeper, observes the Event model, and has callbacks to after_create, after_update, and after_destroy that call expire_page on the index and show pages.
+
 3) Add 'cache_sweeper :event_sweeper, :only => [:create, :update, :destroy]' to event_controller.rb.
 
+
+
 Part 3.3
+
+
 
 Page caching, as implemented in this lab, is not an appropriate caching mechanism on Users if we want to preserve the before_filter redirect functionality because users will be able to access the cached user record page regardless of their login status. The before_filter action will not occur because page caching doesn't even get as far as the controller; the Rails routing mechanism will serve the cached page to the user. What we really want for this situation is action caching, which will run the controller filters and the controller action.
