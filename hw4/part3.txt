@@ -2,9 +2,11 @@ Part 3.1
 
 
 
-When a Rails app receives a request without caching, the Rails routing mechanisms will direct it to the appropriate controller, which will (possibly) interact with the database, perform the appropriate controller action, render the content, and send the rendered content to the user. In the case of a request with caching, the request goes through the routing step but will bypass the controller; instead the requested page is retrieved from the app's page cache, and the cached rendered content is returned to the user.
+
+With 8 application processes, 33000 connections, and a rate of 1030, we found the maximum request rate for a URL that would be served by an action in the Events controller to be 1002.6 requests/second.
 
 
+When a Rails app receives a request without caching, the Rails routing mechanisms will direct it to the appropriate controller, which will (possibly) interact with the database, perform the appropriate controller action, render the content, and send the rendered content to the user. In the case of a request with caching, the request goes through the routing step but will bypass the controller; instead the requested page is retrieved from the app's page cache, and the cached rendered content is returned to the user. By bypassing the controller and database, the number of requests/second that the Rails app can handle rises dramatically, as shown in our graph and the max requests/second we found for 8 application processes.
 
 Problems arise when users add new events or update/destroy existing events. Since the main events listing and individual event views are cached, users will continue seeing the stale cached pages even after changes are made. A possible solution is to follow the page invalidation suggestions from the Rails page caching screencast. We can add 'expire_page' statements to the create, update, and destroy controller actions, specifying that the cached main events listing and individual event view associated with the manipulated event should be expired.
 
@@ -30,7 +32,7 @@ To enable cache invalidation, we had to do 3 things:
 
 1) Add 'config.load_paths += %W( #{RAILS_ROOT}/app/sweepers )' to environment.rb.
 
-2) Add an event_sweeper.rb file to the sweepers directory. The EventSweeper class inherits from ActionController::Caching::Sweeper, observes the Event model, and has callbacks to after_create, after_update, and after_destroy that call expire_page on the index and show pages.
+2) Add an event_sweeper.rb file to the sweepers directory. The EventSweeper class inherits from ActionController::Caching::Sweeper, observes the Event model, and has after_create, after_update, and after_destroy methods. These methods call clear_event_cache, which we defined to call expire_page on the index page as well as the show page associated with the modified event.
 
 3) Add 'cache_sweeper :event_sweeper, :only => [:create, :update, :destroy]' to event_controller.rb.
 
